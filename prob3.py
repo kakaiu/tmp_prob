@@ -5,6 +5,7 @@ import random
 import itertools
 from multiprocessing import Process, cpu_count, current_process
 import time
+import numpy as np
 
 #setting: acceptable probability of throwing a valid mapping
 prob_t = 0.1
@@ -19,7 +20,7 @@ def throw_balls(number_balls, number_bins):
 	bins = dict()
 	for i in range(0, number_balls):
 		bin_id = -1
-		bin_id = random.randint(0, number_bins-1)
+		bin_id = np.random.randint(number_bins)
 		balls.append(bin_id)
 		if bin_id not in bins:
 			bins[bin_id] = [i]
@@ -64,13 +65,14 @@ def trial(n, f, c, d):
 				return False
 	return True
 
-def proc(c, d):
+def proc(n, f, c, d, n_trials):
 	count = 0
-	random.seed(int(current_process().name[-1]))
+	init_seed = int(current_process().name[-1])+round(time.time())
+	np.random.seed(init_seed)
 	for i in range(n_trials):
 		if trial(n, f, c, d) == True:
 			count = count + 1
-	print count, n_trials
+	print(count, n_trials)
 
 if __name__ == "__main__":
 	n = int(sys.argv[1])
@@ -81,7 +83,7 @@ if __name__ == "__main__":
 
 	process_list = []
 	for i in range(cpu_count()):
-		p = Process(target=proc, args=(c, d, ))
+		p = Process(target=proc, args=(n, f, c, d, n_trials, ))
 		p.start()
 		process_list.append(p)
 
