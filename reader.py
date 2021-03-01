@@ -2,7 +2,7 @@ import sys
 
 n = int(sys.argv[1])
 f = int(sys.argv[2])
-c = int(sys.argv[3])
+c = float(sys.argv[3])
 d = int(sys.argv[4])
 
 filename = "{0}_{1}_{2}_{3}.txt".format(n, f, c, d)
