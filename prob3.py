@@ -74,9 +74,6 @@ if __name__ == "__main__":
 	n = int(sys.argv[1])
 	f = int(sys.argv[2])
 	n_trials = int(sys.argv[3])
-	tmp_subpath = "tmp/n{0}-f{1}-ntrials{2}".format(n, f, n_trials)
-	if not os.path.exists(tmp_subpath):
-		os.mkdir(tmp_subpath) 
 
 	process_list = []
 	for i in range(cpu_count()):
