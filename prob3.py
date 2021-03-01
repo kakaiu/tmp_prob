@@ -73,11 +73,13 @@ def proc(c, d):
 if __name__ == "__main__":
 	n = int(sys.argv[1])
 	f = int(sys.argv[2])
-	n_trials = int(sys.argv[3])
+	c = int(sys.argv[3])
+	d = int(sys.argv[4])
+	n_trials = int(sys.argv[5])
 
 	process_list = []
 	for i in range(cpu_count()):
-		p = Process(target=proc, args=(1, 2, ))
+		p = Process(target=proc, args=(c, d, ))
 		p.start()
 		process_list.append(p)
 
