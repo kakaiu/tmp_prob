@@ -3,7 +3,8 @@ import sys
 import math
 import random
 import itertools
-from multiprocessing import Process, cpu_count
+from multiprocessing import Process, cpu_count, current_process
+import time
 
 #setting: acceptable probability of throwing a valid mapping
 prob_t = 0.1
@@ -65,6 +66,7 @@ def trial(n, f, c, d):
 
 def proc(c, d):
 	count = 0
+	random.seed(int(current_process().name[-1]))
 	for i in range(n_trials):
 		if trial(n, f, c, d) == True:
 			count = count + 1
