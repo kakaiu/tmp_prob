@@ -77,7 +77,7 @@ def proc(n, f, c, d, n_trials):
 if __name__ == "__main__":
 	n = int(sys.argv[1])
 	f = int(sys.argv[2])
-	c = int(sys.argv[3])
+	c = float(sys.argv[3])
 	d = int(sys.argv[4])
 	n_trials = int(sys.argv[5])
 
