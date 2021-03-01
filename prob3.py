@@ -67,7 +67,7 @@ def trial(n, f, c, d):
 
 def proc(n, f, c, d, n_trials):
 	count = 0
-	init_seed = int(current_process().name[-1])+round(time.time())
+	init_seed = int(current_process().name[-1])*round(time.time()/10)
 	np.random.seed(init_seed)
 	for i in range(n_trials):
 		if trial(n, f, c, d) == True:
